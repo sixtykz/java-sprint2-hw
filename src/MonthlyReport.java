@@ -13,7 +13,7 @@ public class MonthlyReport {
             HashMap <String, Integer> profits = new HashMap<>();
             HashMap <String, Integer> expenses = new HashMap<>();
 
-            for (Month sort: DataReconciliation.monthList){
+            for (MonthlyTransaction sort: DataReconciliation.monthList){
                 if (sort.isExpense){
                     expenses.put(sort.itemName, (sort.quantity*sort.sumOfOne));
                 }else{

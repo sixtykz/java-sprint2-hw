@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class YearlyReport {
-    public void yearlyReport(){
+    public void printYearlyReport(){
         if (DataReconciliation.globalYearMap.size() == 0){
             System.out.println("Ошибка в считывании годового отчёта. Попробуйте снова");
         return;
@@ -33,7 +33,7 @@ public class YearlyReport {
             System.out.println("Год" + yearName);
 
             for (int i = 1; i < 4; i++){
-                System.out.println("Месяц" + i + "\nПрибыль" + localMap.get(i));
+                System.out.println("Месяц" + i + "\nДоход" + localMap.get(i));
             }
         }
 

@@ -33,12 +33,16 @@ public class Main {
                     break;
 
                 case 5:
-                    yearlyReport.yearlyReport();
+                    yearlyReport.printYearlyReport();
+                    break;
+
+                case 6:
+                    System.out.println("Выход!");
                     break;
 
                 default:
                     System.out.println("Извините, такой команды нет!");
-                    System.out.println("Выход!");
+
                     return;
             }
         }
@@ -49,6 +53,6 @@ public class Main {
             System.out.println("1 - Считать все месячные отчёты\n2 - Считать годовой отчёт");
             System.out.println("3 - Сверить отчёты\n4 - Вывести информацию о всех месячных отчётах");
             System.out.println("5 - Вывести информацию о годовом отчёте");
-
+            System.out.println("6 - Выход");
         }
     }

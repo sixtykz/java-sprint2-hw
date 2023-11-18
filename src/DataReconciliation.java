@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataReconciliation {
-    static HashMap<Integer, ArrayList<Month>> globalMonthMap = new HashMap<>();
+    static HashMap<Integer, ArrayList<MonthlyTransaction>> globalMonthMap = new HashMap<>();
     static HashMap<Integer, ArrayList<Year>> globalYearMap = new HashMap<>();
-    static ArrayList <Month> monthList = new ArrayList<>();
+    static ArrayList <MonthlyTransaction> monthList = new ArrayList<>();
     static ArrayList <Year> yearList = new ArrayList<>();
 
     public void dataReconciliation() {
@@ -16,9 +16,9 @@ public class DataReconciliation {
         HashMap<Integer, Integer> monthProfits = new HashMap<>();
         HashMap<Integer, Integer> monthExpenses = new HashMap<>();
         for (int i = 0; i < 3; i++) {
-            ArrayList<Month> local = globalMonthMap.get(i);
+            ArrayList<MonthlyTransaction> local = globalMonthMap.get(i);
             for (int j = 0; j < local.size(); j++){
-                Month item = local.get(j);
+                MonthlyTransaction item = local.get(j);
                 if(item.isExpense) {
                     monthExpenses.put(i, monthExpenses.getOrDefault(i, 0) + item.quantity * item.sumOfOne);
                 }else{

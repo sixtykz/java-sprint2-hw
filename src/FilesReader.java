@@ -7,29 +7,31 @@ import java.util.List;
 
 public class FilesReader {
     public void monthFilesReader() {
-        for (int i = 1; i <= 3; i++) { // итерирую по месяцам файлы, что получить ключ для месячной мапы - месяц
-            DataReconciliation.monthList = readMonthFiles("resources/m.20210" + i + ".csv"); // путь к файлу зависит от итерации
-            DataReconciliation.globalMonthMap.put(i, DataReconciliation.monthList); // сохраняю элементы в globalMonthMap
+        for (int i = 1; i <= 3; i++) {
+            DataReconciliation.monthList = readMonthFiles("resources/m.20210" + i + ".csv");
+            DataReconciliation.globalMonthMap.put(i, DataReconciliation.monthList);
         }
     }
+
     public void yearFilesReader() {
         int yearName = 2021;
         DataReconciliation.yearList = readYearFiles("resources/y." + yearName + ".csv");
         DataReconciliation.globalYearMap.put(yearName, DataReconciliation.yearList);
     }
-    public ArrayList<Month> readMonthFiles(String path) { // считывание месячных файлов
-        ArrayList<Month> months = new ArrayList<>(); // пустой лист для заполнения элементов из каждого файла
+
+    public ArrayList<MonthlyTransaction> readMonthFiles(String path) {
+        ArrayList<MonthlyTransaction> months = new ArrayList<>();
         List<String> content = readFileContents(path);
-        for (int j = 1; j < content.size(); j++) { // итерируя, разделяю лист запятыми
+        for (int j = 1; j < content.size(); j++) {
             String[] parts = content.get(j).split(",");
-            String itemName = parts[0]; // присваиваю значения из листа каждому примитиву
+            String itemName = parts[0];
             boolean isExpense = Boolean.parseBoolean(parts[1]);
             int quantity = Integer.parseInt(parts[2]);
             int sumOfOne = Integer.parseInt(parts[3]);
 
-            months.add(new Month(itemName, isExpense, quantity, sumOfOne)); // сохраняю примитивы с помощью конструктора, чтоб положить в мапу
+            months.add(new MonthlyTransaction(itemName, isExpense, quantity, sumOfOne));
         }
-        return months; // возвращаю лист с примитивными типами для каждого месяца в globalMonthMap
+        return months;
     }
 
     public ArrayList<Year> readYearFiles(String path) {
@@ -47,7 +49,7 @@ public class FilesReader {
         return years;
     }
 
-    List<String> readFileContents(String path) { // метод для считывания файлов
+    List<String> readFileContents(String path) {
         try {
             return Files.readAllLines(Path.of(path));
         } catch (IOException e) {
