@@ -34,8 +34,8 @@ public class FilesReader {
         return months;
     }
 
-    public ArrayList<Year> readYearFiles(String path) {
-        ArrayList<Year> years = new ArrayList<>();
+    public ArrayList<yerlyTransaction> readYearFiles(String path) {
+        ArrayList<yerlyTransaction> years = new ArrayList<>();
         List<String> content = readFileContents(path);
         for (int i = 1; i < content.size(); i++) {
             String line = content.get(i);
@@ -44,7 +44,7 @@ public class FilesReader {
             int amount = Integer.parseInt(parts[1]);
             boolean isExpense = Boolean.parseBoolean(parts[2]);
 
-            years.add(new Year(month, amount, isExpense));
+            years.add(new yerlyTransaction(month, amount, isExpense));
         }
         return years;
     }

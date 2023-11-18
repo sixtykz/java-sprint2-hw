@@ -16,7 +16,7 @@ public class YearlyReport {
         ArrayList<Integer> profits = new ArrayList<>();
         ArrayList<Integer> expenses = new ArrayList<>();
 
-        for (Year checker: DataReconciliation.yearList){
+        for (yerlyTransaction checker: DataReconciliation.yearList){
             if(!checker.isExpense){
                 valueOfProfits = checker.amount;
                 profit += checker.amount;

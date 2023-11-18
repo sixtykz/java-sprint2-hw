@@ -3,9 +3,9 @@ import java.util.HashMap;
 
 public class DataReconciliation {
     static HashMap<Integer, ArrayList<MonthlyTransaction>> globalMonthMap = new HashMap<>();
-    static HashMap<Integer, ArrayList<Year>> globalYearMap = new HashMap<>();
+    static HashMap<Integer, ArrayList<yerlyTransaction>> globalYearMap = new HashMap<>();
     static ArrayList <MonthlyTransaction> monthList = new ArrayList<>();
-    static ArrayList <Year> yearList = new ArrayList<>();
+    static ArrayList <yerlyTransaction> yearList = new ArrayList<>();
 
     public void dataReconciliation() {
         if (globalMonthMap.size() == 0 && globalYearMap.size() == 0) {
@@ -29,7 +29,7 @@ public class DataReconciliation {
         HashMap<Integer, Integer> yearProfits = new HashMap<>();
         HashMap<Integer, Integer> yearExpenses = new HashMap<>();
 
-        for (Year key: yearList){
+        for (yerlyTransaction key: yearList){
             if(key.isExpense) {
                 yearExpenses.put(key.month, key.amount);
             }else{
